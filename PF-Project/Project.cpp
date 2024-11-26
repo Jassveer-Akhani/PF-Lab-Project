@@ -5,23 +5,23 @@
 #include <windows.h>
 
 // Function prototypes
-int rollDice(int sides);                                             // Rolls a dice with a given number of sides
-void waitForRoll();                                                  // Simulates a delay for rolling dice
-void BossmockingLines();                                             // Prints a random mocking line from the boss
-void saveGame(int health, int currentQuest, const char *heroName);   // Saves game progress
-int loadGame(int *health, int *currentQuest, char *heroName);        // Loads game progress
+int rollDice(int sides);                                             
+void waitForRoll();                                                  
+void BossmockingLines();                                             
+void saveGame(int health, int currentQuest, const char *heroName);
+int loadGame(int *health, int *currentQuest, char *heroName);     
 
 // Function to roll a dice
 int rollDice(int sides)
 {
-    return rand() % sides + 1; // Generates a random number between 1 and 'sides'
+    return rand() % sides + 1; 
 }
 
 // Function to create a pause for rolling the dice
 void waitForRoll()
 {
-    getchar();        // Waits for user input (Enter key)
-    Beep(400, 200);   // Produces a beep sound
+    getchar();        
+    Beep(400, 200);   
 }
 
 // Prints a random mocking line from the Underworld King
@@ -35,29 +35,29 @@ void BossmockingLines()
         "You are nothing but an insect beneath my heel!"
     };
 
-    int numLines = sizeof(mockingLines) / sizeof(mockingLines[0]); // Total number of lines
-    int randomIndex = rand() % numLines;                          // Pick a random line
+    int numLines = sizeof(mockingLines) / sizeof(mockingLines[0]); 
+    int randomIndex = rand() % numLines;                       
     printf("The Underworld King Roars: \"%s\"\n", mockingLines[randomIndex]);
 }
 
 // Saves the game to a file
 void saveGame(int health, int currentQuest, const char *heroName)
 {
-    FILE *file = fopen("savegame.txt", "w"); // Opens save file in write mode
+    FILE *file = fopen("savegame.txt", "w"); 
     if (file == NULL)
     {
         printf("Error saving game.\n");
         return;
     }
-    fprintf(file, "%d\n%d\n%s\n", health, currentQuest, heroName); // Writes data to file
-    fclose(file);                                                  // Closes the file
+    fprintf(file, "%d\n%d\n%s\n", health, currentQuest, heroName); 
+    fclose(file);                                                  
     printf("Game saved successfully!\n");
 }
 
 // Loads the game from a file
 int loadGame(int *health, int *currentQuest, char *heroName)
 {
-    FILE *file = fopen("savegame.txt", "r"); // Opens save file in read mode
+    FILE *file = fopen("savegame.txt", "r"); 
     if (file == NULL)
     {
         printf("Error: Could not open save file.\n");
@@ -72,38 +72,36 @@ int loadGame(int *health, int *currentQuest, char *heroName)
         return 0;
     }
 
-    fclose(file); // Closes the file
+    fclose(file); 
     printf("Save file loaded successfully! You are at Quest %d with %d health.\n", *currentQuest, *health);
     return 1;
 }
 // Main function
 int main()
 {
-    srand(time(0));                          // Seed the random number generator
-    char playAgain;                          // Variable to store user's decision to continue
-    char heroName[30];                       // Hero's name
-    char swordName[] = "Sword of Legend";    // Initial sword name
-    char inventory[30];                      // Inventory string
-    int health = 100;                        // Hero's starting health
-    int currentQuest = 1;                    // Starting quest number
+    srand(time(0));                          
+    char playAgain;                          
+    char heroName[30];                       
+    char swordName[] = "Sword of Legend";    
+    char inventory[30];                      
+    int health = 100;                        
+    int currentQuest = 1;                    
 
-    // Check for a save file and offer to load it
     if (loadGame(&health, &currentQuest, heroName))
     {
         char choice;
         printf("\nDo you want to continue from your last save? (y/n): ");
         scanf(" %c", &choice);
-        getchar(); // Clear input buffer
+        getchar(); 
         Beep(400, 500);
 
         if (choice != 'y' && choice != 'Y')
         {
-            // Start a new game if user does not load
             health = 100;
             currentQuest = 1;
             printf("Enter your hero's name: ");
             fgets(heroName, sizeof(heroName), stdin);
-            heroName[strcspn(heroName, "\n")] = '\0'; // Remove newline character
+            heroName[strcspn(heroName, "\n")] = '\0'; 
         }
     }
     else
@@ -114,8 +112,8 @@ int main()
         heroName[strcspn(heroName, "\n")] = '\0'; // Remove newline character
     }
 
-    strncpy(inventory, swordName, sizeof(inventory) - 1); // Add the sword to the inventory
-    inventory[sizeof(inventory) - 1] = '\0';             // Null-terminate the string
+    strncpy(inventory, swordName, sizeof(inventory) - 1); 
+    inventory[sizeof(inventory) - 1] = '\0';             
 
     // Storyline Introduction
     printf("\nYou, %s, were born in Eldermoon, the last refuge of the Elven kin in Middle Earth.\n\n", heroName);
@@ -245,7 +243,7 @@ int main()
 			printf("Press Enter again to roll the dice...\n");
 			waitForRoll();
 
-			int chestResult = rollDice(3); // Roll a 3-sided dice for outcomes
+			int chestResult = rollDice(3); 
 
 			if (chestResult == 1)
 			{
@@ -261,13 +259,13 @@ int main()
 				printf("Oh no! The chest was booby-trapped! You lose 10 health.\n");
 				health -= 10;
 				printf("Your health is now: %d\n\n", health);
-				currentQuest++; // Progress to the next quest
+				currentQuest++; 
 			}
 			else
 			{
 				// Dangerous outcome: The chest was a Mimic
 				printf("The chest was a Mimic! It lunges at you, snarling.\n");
-				int mimicHealth = 3; // Mimic's health pool
+				int mimicHealth = 3; 
 
 				// Battle with the Mimic
 				while (mimicHealth > 0 && health > 0)
@@ -315,7 +313,7 @@ int main()
 			char exitChoice;
 			printf("Do you want to save and exit the game? (y/n): ");
 			scanf(" %c", &exitChoice);
-			Beep(400, 500); // Sound effect
+			Beep(400, 500); 
 			if (exitChoice == 'y' || exitChoice == 'Y')
 			{
 				saveGame(health, currentQuest, heroName);
@@ -332,27 +330,25 @@ int main()
 
 			int choice;
 			scanf("%d", &choice);
-			Beep(400, 500); // Sound effect
+			Beep(400, 500); 
 
 			if (choice == 2)
 			{
-				// Correct answer
 				printf("Correct! You have proven your wisdom.\n\n");
 			}
 			else
 			{
-				// Wrong answer
 				health -= 20;
 				printf("Wrong answer. The correct answer was 'An echo'.\n");
 				printf("Your health is now: %d\n\n", health);
 			}
-			currentQuest++; // Progress to the next quest
+			currentQuest++; 
 
 			// Offer to save and exit
 			char exitChoice;
 			printf("Do you want to save and exit the game? (y/n): ");
 			scanf(" %c", &exitChoice);
-			Beep(400, 500); // Sound effect
+			Beep(400, 500); 
 			if (exitChoice == 'y' || exitChoice == 'Y')
 			{
 				saveGame(health, currentQuest, heroName);
@@ -367,13 +363,13 @@ int main()
 			printf("Your health before the Final Quest: %d\n\n", health);
 			printf("\n--- Final Quest: The Underworld King emerges from the shadows! ---\n");
 
-			int bossHealth = 8; // Boss's health pool
-			int potion = 1;		// Track availability of health potion
+			int bossHealth = 8; 
+			int potion = 1;		
 
 			// Battle loop with the boss
 			while (bossHealth > 0 && health > 0)
 			{
-				BossmockingLines(); // Display mocking lines
+				BossmockingLines(); 
 
 				printf("Press Enter to roll the dice to fight the Underworld King...\n");
 				waitForRoll();
@@ -390,14 +386,13 @@ int main()
 				}
 				else if (heroRoll == enemyRoll)
 				{
-					// No damage, clashing blows
 					printf("Your swords clashed and sent a loud roar amongst the lands.\n");
 				}
 				else
 				{
 					// Boss strikes the hero
 					health -= 20;
-					health = (health < 0) ? 0 : health; // Ensure health doesn't go negative
+					health = (health < 0) ? 0 : health; 
 					printf("The Underworld King strikes you! Your health is now %d.\n", health);
 				}
 
@@ -406,7 +401,7 @@ int main()
 				{
 					printf("A health potion appears from the ruins! You gain 20 health.\n");
 					health += 20;
-					potion = 0; // Consume the potion
+					potion = 0; 
 				}
 
 				// Check for defeat or victory
@@ -426,9 +421,3 @@ int main()
 
 	return 0;
 }
-
-		
-    
-
-
-
