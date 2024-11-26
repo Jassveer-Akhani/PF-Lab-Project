@@ -3,44 +3,58 @@
 
 ## Overview
 
-**Eldermoon: The Last Stand** is a text-based role-playing game (RPG) set in a fantastical world where you, as the last hope of the Elven kin, battle against dark forces threatening Middle Earth. Embark on an adventure filled with quests, battles, riddles, and a quest to defeat the Underworld King.
+**Dungeon & Dragons** is an engaging text-based role-playing game (RPG) where you embark on an adventure as a heroic elf, battling against dark forces, solving riddles, and exploring dangerous quests. With a simple dice roll mechanic, every action you take is determined by the roll of the dice, adding an element of chance to every decision.
+
 
 ## Features
 
-- **Randomized Combat**: Engage in dice-based battles with enemies using the `rollDice` function.
-- **Multiple Quests**: Experience a variety of quests, including battling dark minions, solving riddles, and confronting the Underworld King.
-- **Game Saving**: Save and load your progress, allowing you to pick up where you left off.
-- **Storyline**: Immerse yourself in a rich narrative as you guide the Elven hero through their journey to save their people.
+- **Hero Creation**: Choose your hero's name and start your journey as the last hope of the Elven race.
+- **Multiple Quests**: Battle dark minions, solve riddles, and face the ultimate boss, the Underworld King.
+- **Dice Rolling Mechanics**: Every action is decided by a dice roll, creating an element of randomness and excitement.
+- **Save/Load Functionality**: Save your progress at any point and pick up where you left off later.
+- **Boss Fights**: Engage in epic battles with powerful bosses, including the fearsome Underworld King.
+- **Health Management**: Your health is constantly at risk—defeat enemies and complete quests to stay alive.
+- **Mysterious Encounters**: Find chests, gain health potions, or face deadly mimics.
+
+## How to Play
+
+1. **Start a New Game**:
+   - Launch the game and choose your hero's name.
+   - Immerse yourself in the rich storyline as you begin your adventure in Eldermoon.
+
+2. **Roll the Dice**:
+   - When engaging in battle or facing challenges, you will roll dice to determine the outcome.
+   - Higher rolls mean you succeed, but low rolls can cost you health.
+
+3. **Complete Quests**:
+   - Progress through quests by defeating enemies, solving riddles, and making the right choices.
+   - Your decisions will determine your fate and the survival of the Elven race.
+
+4. **Save and Load**:
+   - You can save your game at any point outside of combat. Simply open the **Game Menu** and select **Save Game**.
+   - Your save will store all your hero’s stats, inventory, quests, and map progress, ensuring you don’t lose any valuable progress during your adventures.
 
 ## Installation
 
-1. **Clone this repository**:
+To play the game, you will need a C compiler. Follow these steps:
 
-    ```bash
-    git clone https://github.com/yourusername/eldemoon-the-last-stand.git
-    ```
+1. **Clone the Repository**:
+   - Clone this repository to your local machine using the command:
+     ```bash
+     git clone https://github.com/your-username/dungeon-and-dragons.git
+     ```
 
-2. **Navigate to the project directory**:
+2. **Compile the Code**:
+   - Navigate to the game directory and compile the game using a C compiler like GCC:
+     ```bash
+     gcc -o dungeon_and_dragons main.c
+     ```
 
-    ```bash
-    cd eldemoon-the-last-stand
-    ```
-
-3. **Compile the game**:
-
-    Use any C compiler to compile the `game.c` file. For example, with GCC:
-
-    ```bash
-    gcc game.c -o eldemoon
-    ```
-
-4. **Run the game**:
-
-    After compiling, you can run the game with the following command:
-
-    ```bash
-    ./eldemoon
-    ```
+3. **Run the Game**:
+   - After compiling, run the game with:
+     ```bash
+     ./dungeon_and_dragons
+     ```
 
 ## Gameplay
 
