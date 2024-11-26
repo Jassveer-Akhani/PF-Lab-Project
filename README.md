@@ -1,4 +1,4 @@
-<img align="left" src="logo/WhatsApp Image 2024-11-21 at 20.07.06_91a9033e.png" width=256>.
+<img align="left" src="logo/WhatsApp Image 2024-11-21 at 20.07.06_91a9033e.jpg" width=256>.
 ## raudio is simple and easy-to-use audio library based on miniaudio.
 
 ## Overview
